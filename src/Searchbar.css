@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    margin-right: 500px;
+}
+
+.container input{
+    margin-top: auto;
+    height: 30px;
+    margin-left: 500px;
+    width: 450px;
+    border-radius: 10px;
+}
+
+.icon1{
+    size: 50px;
+    margin-top: 5px;
+    margin-left: 35px;
+}
+
+.icon2{
+    margin-top: 5px;
+    margin-left: 15px;
+    
+}
+
+
