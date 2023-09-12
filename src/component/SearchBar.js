@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './Searchbar.css'
+import '../style/Searchbar.css'
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import GridViewIcon from '@mui/icons-material/GridView';
 
-function SearchBar({ onSearch }) {
+function SearchBar({ onSearch,toggleView }) {
   const [searchTerm, setSearchTermLocal] = useState('');
 
   // Function to handle input changes
@@ -14,7 +14,6 @@ function SearchBar({ onSearch }) {
   return (
     <div className='container'>
     
-       
       <input
         type="text"
         placeholder="Search products..."
@@ -22,10 +21,9 @@ function SearchBar({ onSearch }) {
         onChange={handleInputChange}
         
       />
-    
       
-      <FormatListBulletedIcon className='icon1' fontSize='large'/>
-        <GridViewIcon className='icon2' fontSize='large'/>
+      <FormatListBulletedIcon className='icon1' fontSize='large' onClick={toggleView}/>
+        <GridViewIcon className='icon2' fontSize='large'  onClick={toggleView}/>
      
       </div>
 

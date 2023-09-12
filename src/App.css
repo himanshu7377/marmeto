@@ -1,8 +1,5 @@
 .App {
-  /* text-align: center;
-  justify-content: center; */
   margin:auto;
-  
   width: 630px;
   height : 1422px;
   top: 128px;
@@ -14,17 +11,12 @@
 }
 
 .plp{
-  /* margin-left: 40px; */
   text-align: center;
 }
 
 .search-bar{
   display: flex;
-
-     
   margin-left: 500px;
- 
-   
  
 }
 
@@ -32,6 +24,27 @@
 .icons {
   display: flex;
   align-items: center;
-  margin-left: auto; /* Pushes the icons to the left */
-  /* Add any other styles as needed */
+  margin-left: auto; 
+  
 }
+
+
+.product-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.outer-box {
+ 
+  width: 580px;
+  max-width: 800px; 
+  margin: 0 auto; /* Center the box horizontally */
+  padding: 20px; 
+  border: 1px solid #E4E4E4; 
+  border-radius: 5px; 
+  box-shadow: 0px 4px 4px 0px #00000040; 
+}
+

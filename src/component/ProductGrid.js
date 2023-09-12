@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './Productcard.css'
+import '../style/ProductGrid.css'; 
 
-function ProductList({searchTerm}) {
+function ProductGrid({ searchTerm }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Define the API endpoint URL
+    // API endpoint URL
     const apiUrl = "https://mocki.io/v1/0934df88-6bf7-41fd-9e59-4fb7b8758093";
 
     // Function to fetch product data
@@ -25,57 +25,52 @@ function ProductList({searchTerm}) {
 
     // Call the fetchProductData function
     fetchProductData();
-  }, []); // The empty array [] means this effect runs once after the initial render
+  }, []); 
 
-  
+  // Function to highlight the search query in product 
   function highlightSearchQuery(text, query) {
     if (!query) return text;
 
     // Create a regular expression to match the search query, case-insensitive
     const regex = new RegExp(`(${query})`, 'gi');
 
-    // Split the text into parts that match the query and the rest
-    const parts = text.split(regex);
+    // Check if the text contains the query
+    if (regex.test(text)) {
+      return (
+        <div className="highlight" key={text}>
+          {text}
+        </div>
+      );
+    }
 
-    // Use map to wrap matching portions in a span with a highlight class
-    return parts.map((part, index) => (
-      regex.test(part) ? <span className="highlight" key={index}>{part}</span> : part
-    ));
+    return text;
   }
-  
-  
-  
-  
-  
-  
 
   return (
-    <div>
-        
-    <div className="center-container"> 
-   
+    
+        <div className="outer-box"> 
       {products.map((product, index) => (
-        <div key={index} className="product-card">
+        <div key={index} className="product-grid-item">
           <div className='product-img'>
             <img src={product.product_image} alt={product.product_title} />
           </div>
           <div className="product-details">
-            <h1> {highlightSearchQuery(product.product_title, searchTerm)}</h1>
+            <h1>{highlightSearchQuery(product.product_title, searchTerm)}</h1>
             <ul>
               {product.product_variants.map((variant, variantIndex) => (
-                <div className='product-varients'>
-                <li key={variantIndex} >{highlightSearchQuery(Object.values(variant).join(' '), searchTerm)}</li>
+                <div className='product-variants'>
+                  <li key={variantIndex}>{highlightSearchQuery(Object.values(variant), searchTerm)}</li>
                 </div>
               ))}
             </ul>
-            <p className='product_batch'>{product.product_badge}</p>
-            {/* Render other product information here */}
+            <p className='product-batch'>{product.product_badge}</p>
+            
           </div>
         </div>
       ))}
-    </div>
-    </div>
+      </div>
+    
   );
 }
 
-export default ProductList;
+export default ProductGrid;
